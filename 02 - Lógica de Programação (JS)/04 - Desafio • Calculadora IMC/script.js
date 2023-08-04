@@ -1,4 +1,10 @@
-
+/*
+*
+*   Piloto: Marcos
+*   Co-pilotos: Isabela, João, Kawã, Pedro  
+*   Obs: Não coloquei a mão no código depois da sala temática :)
+*
+*/
 
 const pow = (numero, potencia) => {
     if(potencia == 0) return 1;

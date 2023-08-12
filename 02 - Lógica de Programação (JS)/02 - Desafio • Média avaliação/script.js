@@ -2,7 +2,7 @@ const btnSubmit = document.getElementById("btnSubmit");
 
 
 const calculaMedia = () => {
-    const btnResultado = document.getElementById("btnResultado");
+    const selResultado = document.getElementById("selResultado");
 
     const campoUmaEstrela = document.getElementById("campoUmaEstrela");
     const campoDuasEstrelas = document.getElementById("campoDuasEstrelas");
@@ -32,7 +32,7 @@ const calculaMedia = () => {
 
 
     
-    btnResultado.innerHTML = formula();
+    selResultado.innerHTML = formula();
 };
 
 btnSubmit.onclick = calculaMedia;

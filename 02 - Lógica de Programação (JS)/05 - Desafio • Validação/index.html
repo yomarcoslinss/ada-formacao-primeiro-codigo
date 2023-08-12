@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Desafio - Validação</title>
+        <style>
+            #tabelaAlunos {
+                border: 1px solid black;
+                margin: 0 auto;
+                border-collapse: collapse;
+                text-align: center;
+                width: 100%;
+
+            }
+
+            th, td {
+                border: 1px solid black;
+                padding: 10px;
+            }
+
+            input, button {
+                display: block;
+                margin-bottom: 1rem;
+                padding: 0.5rem;
+            }
+
+            form {
+                display: flex;
+                flex-direction: column;
+
+            }
+            
+        </style>
+    </head>
+    <body>
+
+        <form>
+            <label for="formNomeAluno">Nome do aluno:</label>
+            <input type="text" name="formNomeAluno" id="formNomeAluno">
+            <label for="formTurmaAluno">Turma do aluno:</label>
+            <input type="text" name="formTurmaAluno" id="formTurmaAluno">
+            <label for="formNotasAluno">Notas do aluno:</label>
+            <input type="text" name="formNotasAluno" id="formNotasAluno">
+            <button type="submit" id="btnCadastrarAluno">Cadastrar Aluno</button>
+        </form>
+        <table id="tabelaAlunos">
+            <tr>
+                <th>Nome</th>
+                <th>Turma</th>
+                <th>Notas</th>
+            </tr>
+        </table>
+
+        <script src="./script.js"></script>
+    </body>
+</html>

@@ -42,94 +42,109 @@ const cadastrarTurma = ({ id, capacidadeAlunos }) => {
     } else {
         throw new Error(`A turma ${id} já existe! Insira outro ID.`);
     }
-
 };
 
-const cadastrarAluno = ({nome, sobrenome, email, turma, nascimento, notas, ativo = true}) => {
-
-    if(!nome || !sobrenome || !email || !turma || !nascimento || !notas) {
-        throw new Error('Sintaxe inválida! verifique se você inseriu todos os parâmetros necessários para cadastrar um aluno.')
+const cadastrarAluno = ({
+    nome,
+    sobrenome,
+    email,
+    turma,
+    nascimento,
+    notas,
+    ativo = true,
+}) => {
+    if (!nome || !sobrenome || !email || !turma || !nascimento || !notas) {
+        throw new Error(
+            "Sintaxe inválida! verifique se você inseriu todos os parâmetros necessários para cadastrar um aluno."
+        );
     }
 
-    const alunoExistente = alunos.find(aluno => aluno.email === email);
+    const alunoExistente = alunos.find((aluno) => aluno.email === email);
 
     const validarNome = () => {
         const regex = /^[a-zA-Z]+$/;
 
-        if(!regex.test(nome) || nome.length > 32 || nome.length < 3) {
-            throw new Error('O nome que você informou é inválido!')
+        if (!regex.test(nome) || nome.length > 32 || nome.length < 3) {
+            throw new Error("O nome que você informou é inválido!");
         }
 
         nome = nome.toLowerCase();
         nome = nome[0].toUpperCase() + nome.slice(1);
-    }
+    };
 
     const validarSobrenome = () => {
         const regex = /^[a-zA-Z]+$/;
 
-        if(!regex.test(sobrenome) || sobrenome.length > 32) {
-            throw new Error('O sobrenome que você informou é inválido!')
+        if (!regex.test(sobrenome) || sobrenome.length > 32) {
+            throw new Error("O sobrenome que você informou é inválido!");
         }
 
         sobrenome = sobrenome.toLowerCase();
         sobrenome = sobrenome[0].toUpperCase() + sobrenome.slice(1);
-    }
+    };
 
     const validarEmail = () => {
         const regex = /^([a-zA-Z0-9_.+-]+)@([a-zA-Z0-9-]+\.)+[a-zA-Z]{2 ||6}$/;
         if (!regex.test(email)) {
             throw new Error("O email que você informou é inválido!");
         }
-    }
+    };
 
     const validarTurma = () => {
-        const turmaExistente = turmas.find(t => turma === t.id );
+        const turmaExistente = turmas.find((t) => turma === t.id);
 
-        if(isNaN(turma)) {
-            throw new Error('O ID da turma é composto somente por números! (0 - 10)');
+        if (isNaN(turma)) {
+            throw new Error(
+                "O ID da turma é composto somente por números! (0 - 10)"
+            );
         }
 
-        if(!turmaExistente) {
+        if (!turmaExistente) {
             throw new Error(`A turma ${turma} não existe!`);
         }
-    }
+    };
 
     const validarDataNascimento = () => {
         const regex = /^(0[1-9]|1[0-2])\/(0[1-9]|1[0-2])\/(19|20)[0-9]{2}$/;
-        if(!regex.test(nascimento)) {
-            throw new Error('A data de nascimento que você ionformou é inválida!');   
+        if (!regex.test(nascimento)) {
+            throw new Error(
+                "A data de nascimento que você ionformou é inválida!"
+            );
         }
-    }
+    };
 
     const validarNotas = () => {
-        const arrayNotas = notas.split(' ');
+        const arrayNotas = notas.split(" ");
 
-        for(let i = 0; i < arrayNotas.length; i++) {
-            
+        for (let i = 0; i < arrayNotas.length; i++) {
             arrayNotas[i] = parseInt(arrayNotas[i]);
-            
-            if(arrayNotas[i] > 10 || arrayNotas[i] < 0) {
-                throw new Error('Insira uma nota válida! (0 - 10)')
+
+            if (arrayNotas[i] > 10 || arrayNotas[i] < 0) {
+                throw new Error("Insira uma nota válida! (0 - 10)");
             }
 
-            if(isNaN(arrayNotas[i])) {
-                throw new Error('Você deve inserir pelo menos uma nota de 0 a 10 (separadas por 1 espaço)')
+            if (isNaN(arrayNotas[i])) {
+                throw new Error(
+                    "Você deve inserir pelo menos uma nota de 0 a 10 (separadas por 1 espaço)"
+                );
             }
         }
 
-        if(arrayNotas.length > 5 || arrayNotas.length < 1) {
-            throw new Error('Você deve inserir 1 a 5 notas!')
+        if (arrayNotas.length > 5 || arrayNotas.length < 1) {
+            throw new Error("Você deve inserir 1 a 5 notas!");
         }
 
         notas = arrayNotas;
-    }
+    };
 
     const ehAtivo = () => {
-        if(ativo !== true && ativo !== false) {
-            throw new Error('O campo [ativo] deve ser preenchido com true ou false (o valor padrão é true)');
+        if (ativo !== true && ativo !== false) {
+            throw new Error(
+                "O campo [ativo] deve ser preenchido com true ou false (o valor padrão é true)"
+            );
         }
-    }
-    
+    };
+
     validarNome();
     validarSobrenome();
     validarEmail();
@@ -138,7 +153,7 @@ const cadastrarAluno = ({nome, sobrenome, email, turma, nascimento, notas, ativo
     validarNotas();
     ehAtivo();
 
-    if(!alunoExistente) {
+    if (!alunoExistente) {
         alunos.push({
             nome,
             sobrenome,
@@ -146,95 +161,211 @@ const cadastrarAluno = ({nome, sobrenome, email, turma, nascimento, notas, ativo
             turma,
             nascimento,
             notas,
-            ativo
-        })
+            ativo,
+        });
     } else {
-        throw new Error('O aluno já existe! verifique o email informado.');
+        throw new Error("O aluno já existe! verifique o email informado.");
     }
 };
 
 const removerAluno = (email) => {
-    const alunoExistente = alunos.find(aluno => aluno.email === email);
+    const alunoExistente = alunos.find((aluno) => aluno.email === email);
 
-    if(alunoExistente) {
+    if (alunoExistente) {
         alunos.splice(alunoExistente, 1);
     } else {
-        throw new Error('O aluno não existe! verifique o email informado.');
+        throw new Error("O aluno não existe! verifique o email informado.");
     }
-}
+};
 
-const atualizarAluno = ({email, nome, sobrenome, email}) => {
-    const alunoExistente = alunos.find(aluno => aluno.email === email);
+const atualizarAluno = ({
+    aluno,
+    nome,
+    sobrenome,
+    email,
+    turma,
+    nascimento,
+    notas,
+    ativo,
+}) => {
+    const alunoExistente = alunos.find((a) => a.email === aluno);
 
-    if(alunoExistente) {
+    if (!aluno) {
+        throw new Error("Insira um endereço de email para localizar o aluno.");
+    }
 
-        if(nome) {
+    if (alunoExistente) {
+        if (nome) {
             const validarNome = () => {
                 const regex = /^[a-zA-Z]+$/;
-        
-                if(!regex.test(nome) || nome.length > 32 || nome.length < 3) {
-                    throw new Error('O nome que você informou é inválido!')
+
+                if (!regex.test(nome) || nome.length > 32 || nome.length < 3) {
+                    throw new Error("O nome que você informou é inválido!");
                 }
-        
+
                 nome = nome.toLowerCase();
                 nome = nome[0].toUpperCase() + nome.slice(1);
-            }
+            };
 
             validarNome();
             alunoExistente.nome = nome;
         }
 
-        if(sobrenome) {
+        if (sobrenome) {
             const validarSobrenome = () => {
                 const regex = /^[a-zA-Z]+$/;
-        
-                if(!regex.test(sobrenome) || sobrenome.length > 32 || sobrenome.length < 3) {
-                    throw new Error('O sobrenome que você informou é inválido!')
+
+                if (
+                    !regex.test(sobrenome) ||
+                    sobrenome.length > 32 ||
+                    sobrenome.length < 3
+                ) {
+                    throw new Error(
+                        "O sobrenome que você informou é inválido!"
+                    );
                 }
-        
+
                 sobrenome = sobrenome.toLowerCase();
                 sobrenome = sobrenome[0].toUpperCase() + sobrenome.slice(1);
-            }
+            };
 
             validarSobrenome();
             alunoExistente.sobrenome = sobrenome;
         }
 
-        if(email) {
+        if (email) {
             const validarEmail = () => {
-                const regex = /^([a-zA-Z0-9_.+-]+)@([a-zA-Z0-9-]+\.)+[a-zA-Z]{2 ||6}$/;
+                const regex =
+                    /^([a-zA-Z0-9_.+-]+)@([a-zA-Z0-9-]+\.)+[a-zA-Z]{2 ||6}$/;
                 if (!regex.test(email)) {
                     throw new Error("O email que você informou é inválido!");
                 }
-            }
+            };
 
             validarEmail();
             alunoExistente.email = email;
         }
 
-        /*
-        #
-        #
-        #   CONTINUAR AQUI !!!!!!!!!!!!
-        #
-        #
-        */
+        if (turma) {
+            const validarTurma = () => {
+                const turmaExistente = turmas.find((t) => turma === t.id);
 
+                if (isNaN(turma)) {
+                    throw new Error(
+                        "O ID da turma é composto somente por números! (0 - 10)"
+                    );
+                }
+
+                if (!turmaExistente) {
+                    throw new Error(`A turma ${turma} não existe!`);
+                }
+            };
+
+            validarTurma();
+            alunoExistente.turma = turma;
+        }
+
+        if (nascimento) {
+            const validarDataNascimento = () => {
+                const regex =
+                    /^(0[1-9]|1[0-2])\/(0[1-9]|1[0-2])\/(19|20)[0-9]{2}$/;
+                if (!regex.test(nascimento)) {
+                    throw new Error(
+                        "A data de nascimento que você ionformou é inválida!"
+                    );
+                }
+            };
+
+            validarDataNascimento();
+            alunoExistente.nascimento = nascimento;
+        }
+
+        if (notas) {
+            const validarNotas = () => {
+                const arrayNotas = notas.split(" ");
+
+                for (let i = 0; i < arrayNotas.length; i++) {
+                    arrayNotas[i] = parseInt(arrayNotas[i]);
+
+                    if (arrayNotas[i] > 10 || arrayNotas[i] < 0) {
+                        throw new Error("Insira uma nota válida! (0 - 10)");
+                    }
+
+                    if (isNaN(arrayNotas[i])) {
+                        throw new Error(
+                            "Você deve inserir pelo menos uma nota de 0 a 10 (separadas por 1 espaço)"
+                        );
+                    }
+                }
+
+                if (arrayNotas.length > 5 || arrayNotas.length < 1) {
+                    throw new Error("Você deve inserir 1 a 5 notas!");
+                }
+
+                notas = arrayNotas;
+            };
+
+            validarNotas();
+            alunoExistente.notas = notas;
+        }
+
+        if (ativo) {
+            const ehAtivo = () => {
+                if (ativo !== true && ativo !== false) {
+                    throw new Error(
+                        "O campo [ativo] deve ser preenchido com true ou false (o valor padrão é true)"
+                    );
+                }
+            };
+
+            ehAtivo();
+            alunoExistente.ativo = ativo;
+        }
     } else {
-        throw new Error('O aluno não existe! verifique o email informado.');
+        throw new Error("O aluno não existe! verifique o email informado.");
     }
-}
+};
 
 const buscarAluno = (email) => {
-    const alunoExistente = alunos.find(aluno => aluno.email === email);
+    const alunoExistente = alunos.find((aluno) => aluno.email === email);
 
-    if(alunoExistente) {
+    if (alunoExistente) {
         console.log(JSON.stringify(alunoExistente));
         return alunoExistente;
     } else {
-        throw new Error('O aluno não existe! verifique o email informado.');
+        throw new Error("O aluno não existe! verifique o email informado.");
     }
-}
+};
 
-cadastrarTurma({id: 10, capacidadeAlunos: 10})
-cadastrarAluno({nome: 'Marcos', sobrenome: 'Vinicius', email: 'vinicius.gzm0@gmail.com', turma: 10, nascimento: '08/12/2002', notas: '10 10 10 9'})
+const listarAlunos = () => {
+    return alunos;
+};
+
+const totalTurmas = () => {
+    return `Quantidade total de turmas na escola: ${turmas.length}`;
+};
+
+const calcularMedia = (aluno) => {
+    const alunoExistente = alunos.find((a) => a.email === aluno);
+
+    if (alunoExistente) {
+        let notas = alunoExistente.notas,
+            total = 0;
+
+        notas.forEach((nota) => {
+            total += nota;
+        });
+
+        return total / notas.length;
+    }
+};
+
+cadastrarTurma({ id: 10, capacidadeAlunos: 10 });
+cadastrarAluno({
+    nome: "Marcos",
+    sobrenome: "Vinicius",
+    email: "vinicius.gzm0@gmail.com",
+    turma: 10,
+    nascimento: "08/12/2002",
+    notas: "10 10 0 0",
+});

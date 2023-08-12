@@ -115,9 +115,11 @@ const cadastrarAluno = ({
 
     const validarNotas = () => {
         const arrayNotas = notas.split(" ");
+        let media = 0;
 
         for (let i = 0; i < arrayNotas.length; i++) {
             arrayNotas[i] = parseInt(arrayNotas[i]);
+            media += arrayNotas[i]
 
             if (arrayNotas[i] > 10 || arrayNotas[i] < 0) {
                 throw new Error("Insira uma nota válida! (0 - 10)");
@@ -135,6 +137,9 @@ const cadastrarAluno = ({
         }
 
         notas = arrayNotas;
+        media = media / notas.length;
+
+        notas.push({media});
     };
 
     const ehAtivo = () => {
@@ -283,26 +288,31 @@ const atualizarAluno = ({
         if (notas) {
             const validarNotas = () => {
                 const arrayNotas = notas.split(" ");
-
+                let media = 0;
+        
                 for (let i = 0; i < arrayNotas.length; i++) {
                     arrayNotas[i] = parseInt(arrayNotas[i]);
-
+                    media += arrayNotas[i]
+        
                     if (arrayNotas[i] > 10 || arrayNotas[i] < 0) {
                         throw new Error("Insira uma nota válida! (0 - 10)");
                     }
-
+        
                     if (isNaN(arrayNotas[i])) {
                         throw new Error(
                             "Você deve inserir pelo menos uma nota de 0 a 10 (separadas por 1 espaço)"
                         );
                     }
                 }
-
+        
                 if (arrayNotas.length > 5 || arrayNotas.length < 1) {
                     throw new Error("Você deve inserir 1 a 5 notas!");
                 }
-
+        
                 notas = arrayNotas;
+                media = media / notas.length;
+        
+                notas.push({media});
             };
 
             validarNotas();
@@ -357,15 +367,130 @@ const calcularMedia = (aluno) => {
         });
 
         return total / notas.length;
+    } else {
+        throw new Error('O aluno não existe! verifique o email informado.');
     }
 };
 
+const desativarAluno = (aluno) => {
+    const alunoExistente = alunos.find((a) => a.email === aluno);
+
+    if(alunoExistente) {
+        if(alunoExistente.ativo === false) {
+            throw new Error('Erro! O aluno já está inativo.')
+        }
+
+        alunoExistente.ativo = false;
+    } else {
+        throw new Error('O aluno não existe! verifique o email informado.');
+    }
+}
+
+const listarAlunosAtivos = () => {
+    const alunosAtivos = alunos.filter(aluno => aluno.ativo === true );
+
+    if(alunosAtivos.length === 0){
+        throw new Error('Nenhum resultado encontrado!');
+    }
+
+    return alunosAtivos;
+}
+
+const listarAlunosInativos = () => {
+    const alunosInativos = alunos.filter(aluno => aluno.ativo === false);
+    
+    if(alunosInativos.length === 0){
+        throw new Error('Nenhum resultado encontrado!');
+    }
+
+    return alunosInativos;
+}
+
+const listarAlunosComMediaEsperada = () => {
+    const alunosComMediaEsperada = alunos.filter(aluno => aluno.notas[aluno.notas.length - 1].media >= 6);
+
+    if(alunosComMediaEsperada) {
+        return alunosComMediaEsperada
+    } else {
+        throw new Error('Nenhum resultado encontrado!');
+    }
+}
+
+const listarAlunosAbaixoDaMediaEsperada = () => {
+    const alunosAbaixoDaMediaEsperada = alunos.filter(aluno => aluno.notas[aluno.notas.length - 1].media < 6);
+
+    if(alunosAbaixoDaMediaEsperada) {
+        return alunosAbaixoDaMediaEsperada;
+    } else {
+        throw new Error('Nenhum resultado encontrado!');
+    }
+}
+
+const gerarRelatorio = () => {
+    return {
+        'Quantidade de Alunos': alunos.length,
+        'Quantidade de Turmas': turmas.length,
+        'Alunos com a média esperada' : listarAlunosComMediaEsperada(),
+        'Alunos abaixo da média esperada' : listarAlunosAbaixoDaMediaEsperada(),
+        'Média dos alunos': {
+            'Aluno' : retornaMediaAlunos(), 
+
+            retornaMediaAlunos() {
+                let arrayAlunos = [];
+                alunos.forEach(aluno => {
+                    arrayAlunos.push({
+                        'Nome' : aluno.nome,
+                        'Media' : aluno.notas[aluno.notas.length - 1].media.
+                    })
+                    
+                })
+            }
+        }        
+    }
+
+
+    }
+}
+
+
+
 cadastrarTurma({ id: 10, capacidadeAlunos: 10 });
+cadastrarTurma({ id: 9, capacidadeAlunos: 5 });
+cadastrarTurma({ id: 4, capacidadeAlunos: 5 });
+
+
 cadastrarAluno({
     nome: "Marcos",
-    sobrenome: "Vinicius",
+    sobrenome: "Santos",
     email: "vinicius.gzm0@gmail.com",
     turma: 10,
     nascimento: "08/12/2002",
     notas: "10 10 0 0",
+});
+
+cadastrarAluno({
+    nome: "Biroliro",
+    sobrenome: "Pereira",
+    email: "vinicius.gzm1@gmail.com",
+    turma: 9,
+    nascimento: "08/12/2002",
+    notas: "5 5 3 7",
+});
+
+cadastrarAluno({
+    nome: "Vinicius",
+    sobrenome: "Barbosa",
+    email: "vinicius.gzm2@gmail.com",
+    turma: 10,
+    nascimento: "08/12/2002",
+    notas: "10 10 10 10",
+});
+
+cadastrarAluno({
+    nome: "Maicon",
+    sobrenome: "Kuster",
+    email: "vinicius.gzm3@gmail.com",
+    turma: 4,
+    nascimento: "08/12/2002",
+    notas: "7 4 8 9",
 });

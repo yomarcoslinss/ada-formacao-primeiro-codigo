@@ -44,15 +44,7 @@ const cadastrarTurma = ({ id, capacidadeAlunos }) => {
     }
 };
 
-const cadastrarAluno = ({
-    nome,
-    sobrenome,
-    email,
-    turma,
-    nascimento,
-    notas,
-    ativo = true,
-}) => {
+const cadastrarAluno = ({ nome, sobrenome, email, turma, nascimento, notas, ativo = true}) => {
     if (!nome || !sobrenome || !email || !turma || !nascimento || !notas) {
         throw new Error(
             "Sintaxe inválida! verifique se você inseriu todos os parâmetros necessários para cadastrar um aluno."
@@ -92,6 +84,15 @@ const cadastrarAluno = ({
 
     const validarTurma = () => {
         const turmaExistente = turmas.find((t) => turma === t.id);
+        const quantidadeAlunosNaTurma = alunos.filter(aluno => aluno.turma === turma).length;
+
+        if (!turmaExistente) {
+            throw new Error(`A turma ${turma} não existe!`);
+        }
+
+        if(quantidadeAlunosNaTurma === turmaExistente.capacidadeAlunos) {
+            throw new Error(`A turma ${turmaExistente.id} já atingiu a capacidade máxima de alunos!`)
+        }
 
         if (isNaN(turma)) {
             throw new Error(
@@ -99,17 +100,23 @@ const cadastrarAluno = ({
             );
         }
 
-        if (!turmaExistente) {
-            throw new Error(`A turma ${turma} não existe!`);
-        }
+        
     };
 
     const validarDataNascimento = () => {
         const regex = /^(0[1-9]|1[0-2])\/(0[1-9]|1[0-2])\/(19|20)[0-9]{2}$/;
+        const dataAtual = new Date();
+
         if (!regex.test(nascimento)) {
             throw new Error(
                 "A data de nascimento que você ionformou é inválida!"
             );
+        }
+
+        const anoNascimento = nascimento.slice(6, 10);
+
+        if(dataAtual.getFullYear() - anoNascimento  <= 16) {
+            throw new Error('O aluno precisa ter pelo menos 16 anos!')
         }
     };
 
@@ -183,17 +190,9 @@ const removerAluno = (email) => {
     }
 };
 
-const atualizarAluno = ({
-    aluno,
-    nome,
-    sobrenome,
-    email,
-    turma,
-    nascimento,
-    notas,
-    ativo,
-}) => {
+const atualizarAluno = ({aluno, nome, sobrenome, email, turma, nascimento, notas, ativo}) => {
     const alunoExistente = alunos.find((a) => a.email === aluno);
+
 
     if (!aluno) {
         throw new Error("Insira um endereço de email para localizar o aluno.");
@@ -239,6 +238,12 @@ const atualizarAluno = ({
         }
 
         if (email) {
+            const emailDuplicado = alunos.find(aluno => aluno.email === email);
+
+            if(emailDuplicado) {
+                throw new Error('O aluno já existe! verifique o email informado.');
+            }
+
             const validarEmail = () => {
                 const regex =
                     /^([a-zA-Z0-9_.+-]+)@([a-zA-Z0-9-]+\.)+[a-zA-Z]{2 ||6}$/;
@@ -272,12 +277,19 @@ const atualizarAluno = ({
 
         if (nascimento) {
             const validarDataNascimento = () => {
-                const regex =
-                    /^(0[1-9]|1[0-2])\/(0[1-9]|1[0-2])\/(19|20)[0-9]{2}$/;
+                const regex = /^(0[1-9]|1[0-2])\/(0[1-9]|1[0-2])\/(19|20)[0-9]{2}$/;
+                const dataAtual = new Date();
+        
                 if (!regex.test(nascimento)) {
                     throw new Error(
                         "A data de nascimento que você ionformou é inválida!"
                     );
+                }
+        
+                const anoNascimento = nascimento.slice(6, 10);
+        
+                if(dataAtual.getFullYear() - anoNascimento  <= 16) {
+                    throw new Error('O aluno precisa ter pelo menos 16 anos!')
                 }
             };
 
@@ -334,6 +346,7 @@ const atualizarAluno = ({
     } else {
         throw new Error("O aluno não existe! verifique o email informado.");
     }
+
 };
 
 const buscarAluno = (email) => {
@@ -426,31 +439,32 @@ const listarAlunosAbaixoDaMediaEsperada = () => {
     }
 }
 
+
+const retornaMediaAlunos = () => {
+    let arrayAlunos = [];
+
+    alunos.forEach(aluno => {
+        arrayAlunos.push({
+            'Nome': aluno.nome,
+            'Email': aluno.email,
+            'Media': aluno.notas[aluno.notas.length - 1].media
+        });
+    });
+
+    return arrayAlunos;
+}
+
 const gerarRelatorio = () => {
+    const mediaAlunos = retornaMediaAlunos();
+
     return {
         'Quantidade de Alunos': alunos.length,
         'Quantidade de Turmas': turmas.length,
-        'Alunos com a média esperada' : listarAlunosComMediaEsperada(),
-        'Alunos abaixo da média esperada' : listarAlunosAbaixoDaMediaEsperada(),
-        'Média dos alunos': {
-            'Aluno' : retornaMediaAlunos(), 
-
-            retornaMediaAlunos() {
-                let arrayAlunos = [];
-                alunos.forEach(aluno => {
-                    arrayAlunos.push({
-                        'Nome' : aluno.nome,
-                        'Media' : aluno.notas[aluno.notas.length - 1].media.
-                    })
-                    
-                })
-            }
-        }        
-    }
-
-
-    }
-}
+        'Alunos com a média esperada': listarAlunosComMediaEsperada(),
+        'Alunos abaixo da média esperada': listarAlunosAbaixoDaMediaEsperada(),
+        'Média dos alunos': mediaAlunos 
+        }
+};
 
 
 

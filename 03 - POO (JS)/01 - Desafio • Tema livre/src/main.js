@@ -13,6 +13,6 @@ const btn = document.getElementById('botao');
 
 
 btn.addEventListener('click', () => {
-    const lek = new Reserva(marcos, s1, 500);
+    const lek = new Reserva(marcos, s1, 1);
     console.log(lek)
 })

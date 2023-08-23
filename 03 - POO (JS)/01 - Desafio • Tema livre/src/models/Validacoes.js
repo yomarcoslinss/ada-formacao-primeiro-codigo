@@ -96,4 +96,16 @@ export default class Validacoes {
             throw new Error("Insira uma suite existente no banco de dados!");
         }
     }
+
+    validarDiasReservados(diasReservados) {
+        if(typeof diasReservados !== "number") {
+            throw new Error("Insira quantos dias você deseja reservar nessa suite!")
+        }
+
+        if(diasReservados < 1) {
+            throw new Error("Insira quantos dias você deseja reservar nessa suite!")
+        }
+
+        return parseInt(diasReservados);
+    }
 }

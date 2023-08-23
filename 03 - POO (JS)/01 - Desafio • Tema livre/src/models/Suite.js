@@ -1,9 +1,10 @@
 import Validacoes from './Validacoes.js';
-const validacoes = new Validacoes();
 
 
 export default class Suite {
     constructor(tipoSuite, capacidade, valorDiaria) {
+        const validacoes = new Validacoes();
+        
         tipoSuite = validacoes.validarTipoSuite(tipoSuite);
         this.tipoSuite = tipoSuite;
 

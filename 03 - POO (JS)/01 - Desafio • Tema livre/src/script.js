@@ -6,6 +6,8 @@ window.Pessoa = Pessoa;
 window.Suite = Suite;
 window.Reserva = Reserva;
 
+
+
 const marcos = new Pessoa('Marcos', 'Linss');
 const s1 = new Suite('spa', 5, 500);
 
@@ -16,3 +18,6 @@ btn.addEventListener('click', () => {
     const lek = new Reserva(marcos, s1, 1);
     console.log(lek)
 })
+
+const btnCadastrarPessoa = document.getElementById("btnCadastrarPessoa");
+btnCadastrarPessoa.addEventListener('click', () => {window.alert("foi")})

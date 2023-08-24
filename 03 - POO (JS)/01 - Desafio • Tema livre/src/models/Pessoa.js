@@ -4,11 +4,17 @@ export default class Pessoa {
     constructor(nome, sobrenome) {
         const validacoes = new Validacoes();
 
-        nome = validacoes.validarNome(nome);
-        this.nome = nome;
+        this._nome = validacoes.validarNome(nome);
         
-        sobrenome = validacoes.validarSobrenome(sobrenome);
-        this.sobrenome = sobrenome;
+        this._sobrenome = validacoes.validarSobrenome(sobrenome);
     }
 
+    get nome() {
+        return this._nome;
+    }
+
+    get sobrenome() {
+        return this._sobrenome;
+    }
 }
+

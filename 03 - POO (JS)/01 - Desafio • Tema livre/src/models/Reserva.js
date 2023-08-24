@@ -4,13 +4,20 @@ export default class Reserva {
     constructor(hospede, suite, diasReservados) {
         const validacoes = new Validacoes();
 
-        hospede = validacoes.validarHospede(hospede);
-        this.hospede = hospede;
+        this._hospede = validacoes.validarHospede(hospede);
+        this._suite = validacoes.validarSuite(suite);
+        this._diasReservados = validacoes.validarDiasReservados(diasReservados);
+    }
 
-        suite = validacoes.validarSuite(suite)
-        this.suite = suite;
-        
-        diasReservados = validacoes.validarDiasReservados(diasReservados);
-        this.diasReservados = diasReservados;
+    get hospede() {
+        return this._hospede;
+    }
+
+    get suite() {
+        return this._suite;
+    }
+
+    get diasReservados() {
+        return this._diasReservados;
     }
 }

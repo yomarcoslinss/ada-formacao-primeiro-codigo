@@ -5,5 +5,4 @@ const canvas = document.getElementById("game-canvas");
 const breakout = new Game(canvas);
 
 
-// breakout.render();
-setInterval(breakout.update.bind(breakout), 10)
+export const interval = setInterval(breakout.update.bind(breakout), 10)

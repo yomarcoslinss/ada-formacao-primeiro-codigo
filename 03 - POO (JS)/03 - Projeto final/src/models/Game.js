@@ -1,24 +1,23 @@
 import { Player } from "./Player.js";
+import { Ball } from "./Ball.js";
 
 export class Game {
     constructor(canvas) {
         this.player = new Player(canvas);
+        this.ball = new Ball(canvas, this.player);
         this.canvas = canvas;
         this.context = canvas.getContext("2d");
-
         window.addEventListener("keydown", (e) => this.keyboard(e));
     }
 
     // render() {
-    //     this.context.fillStyle = "black";
-    //     this.context.fillRect(0, 0, 900, 600);
     //     this.player.draw();
     // }
 
     update() {
-        this.context.fillStyle = "black";
-        this.context.fillRect(0, 0, 900, 600);
+        this.context.clearRect(0, 0, this.canvas.width, this.canvas.height)
         this.player.draw();
+        this.ball.draw();
     }
 
     keyboard(e) {

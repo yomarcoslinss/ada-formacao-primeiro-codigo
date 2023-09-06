@@ -26,8 +26,6 @@ export class Player {
     }
 
     draw() {
-        this.context.fillStyle = "black";
-        this.context.fillRect(0, 0, 900, 600)
         this.context.fillStyle = "white";
         this.context.fillRect(this.x, this.y, this.width, this.height);
     }

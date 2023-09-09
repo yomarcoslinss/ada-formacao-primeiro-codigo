@@ -1,7 +1,7 @@
 export class Player {
     constructor(canvas) {
         this.canvas = canvas;
-        this.context = canvas.getContext("2d");
+        this.context = this.canvas.getContext("2d");
         this.width = 100;
         this.height = 10;
         this.x = canvas.width / 2 - this.width / 2;

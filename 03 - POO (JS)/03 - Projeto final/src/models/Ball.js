@@ -1,4 +1,3 @@
-import { Player } from "./Player.js";
 import { interval } from "../main.js";
 
 export class Ball {
@@ -14,38 +13,33 @@ export class Ball {
     }
 
     draw() {
-        if(this.x + this.moveX > this.canvas.width - this.radius || this.x + this.moveX < this.radius) {
+        if (
+            this.x + this.moveX > this.canvas.width - this.radius ||
+            this.x + this.moveX < this.radius
+        ) {
             this.moveX = -this.moveX;
         }
-        
-        // this.y += this.moveY;   
-        // if(this.y + this.moveY > this.canvas.height - this.radius || this.y + this.moveY < this.radius) {
-        //     this.moveY = -this.moveY;
-        // }
-        
-        if(this.y + this.moveY < this.radius) {
+
+        if (this.y + this.moveY < this.radius) {
             this.moveY = -this.moveY;
-        } else if(this.y + 50 + this.moveY > this.canvas.height - this.radius){
-            if(this.x > this.player.x && this.x < this.player.x + this.player.width) {
+        } else if (this.y + 50 + this.moveY > this.canvas.height - this.radius
+        ) {
+            if (this.x > this.player.x && this.x < this.player.x + this.player.width) {
                 this.moveY = -this.moveY;
             } else {
+                clearInterval(interval);
                 document.location.reload();
                 alert("Fim de jogo :( ");
-                clearInterval(interval);
             }
         }
 
         this.x += this.moveX;
-        this.y += this.moveY;   
-
+        this.y += this.moveY;
 
         this.context.beginPath();
         this.context.arc(this.x, this.y, 10, 0, Math.PI * 2);
         this.context.fillStyle = "white";
         this.context.fill();
         this.context.closePath();
-
-        
     }
-
 }

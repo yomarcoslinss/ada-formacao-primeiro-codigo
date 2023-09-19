@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Inscrição | DiverseDEV</title>
+        <link
+            rel="shortcut icon"
+            href="./src/assets/img/favicon.ico"
+            type="image/x-icon"
+        />
+        <link rel="stylesheet" href="./src/styles/style.css" />
+    </head>
+    <body>
+        <header>
+            <div>
+                <img
+                    class="ada"
+                    src="./src/assets/img/logo-ada.png"
+                    alt="Logo da empresa 'Ada Tech'"
+                />
+            </div>
+            <div style="width: 1px; height: 40px; border-left: 1px solid #ffffff1e; margin: 0 25px";></div>
+            <div>
+                <img
+                class="me"
+                    src="./src/assets/img/ME.svg"
+                    alt="Logo da empresa 'Mercado Eletrônico'"
+                />
+            </div>
+        </header>
+        <main>
+            <section class="container__info__programa">
+                <div class="info__programa__titulo">
+                    <h1>Inscrições Abertas!</h1>
+                    <h2>DiverseDEV</h2>
+                </div>
+                <div class="container__cronometro">
+                    <div class="cronometro__card__d">
+                        <h3>00</h3>
+                        <p>dias</p>
+                    </div>
+                    <div class="cronometro__card__h">
+                        <h3>00</h3>
+                        <p>horas</p>
+                    </div>
+                    <div class="cronometro__card__m">
+                        <h3>00</h3>
+                        <p>minutos</p>
+                    </div>
+                    <div class="cronometro__card__s">
+                        <h3>00</h3>
+                        <p>segundos</p>
+                    </div>
+                </div>
+            </section>
+            <section class="container__form__cadastro">
+                <form action="">
+                    <div class="form__cadastro__dados__pessoais">
+                        <div>
+                            <label for="nomeCompleto">Nome Completo</label>
+                            <input type="text" name="nomeCompleto" id="nomeCompleto" maxlength="150" required />
+                        </div>
+                        <div>
+                            <label for="cpf">CPF</label>
+                            <input type="number" name="cpf" id="cpf" maxlength="11" required />
+                        </div>
+                        <div>
+                            <label for="email">E-mail</label>
+                            <input type="email" name="email" id="email" maxlength="254" required />
+                        </div>
+                        <div>
+                            <label for="confirmarEmail">Confirme seu E-mail</label>
+                            <input type="email" name="confirmarEmail" id="confirmarEmail" maxlength="254" required />
+                        </div>
+                    </div>
+
+                    <div class="form__cadastro__dados__adicionais">
+                        <div>
+                            <label for="telefone">Telefone</label>
+                            <input type="number" name="telefone" id="telefone" maxlength="20" required />
+                        </div>
+                        <div>
+                            <label for="dataNascimento">Data de Nascimento</label>
+                            <input type="date" name="dataNascimento" id="dataNascimento" required />
+                        </div>
+                        <div>
+                            <label for="escolaridade">Qual seu grau de escolaridade?</label>
+                            <select name="escolaridade" id="escolaridade">
+                                <option value="ensinoMedioIncompleto">
+                                    Ensino Médio incompleto
+                                </option>
+                                <option value="ensinoMedioCompleto">Ensino Médio completo</option>
+                                <option value="ensinoTecnicoIncompleto">
+                                    Ensino Técnico incompleto
+                                </option>
+                                <option value="ensinoTecnicoCompleto">
+                                    Ensino Técnico completo
+                                </option>
+                                <option value="superiorTecnologoIncompleto">
+                                    Superior Tecnólogo incompleto
+                                </option>
+                                <option value="superiorTecnologoCompleto">
+                                    Superior Tecnólogo completo
+                                </option>
+                                <option value="ensinoSuperiorBachareladoIncompleto">
+                                    Ensino Superior bacharelado incompleto
+                                </option>
+                                <option value="ensinoSuperiorBachareladoCompleto">
+                                    Ensino Superior bacharelado completo
+                                </option>
+                                <option value="posGraduacaoIncompleta">
+                                    Pós Graduação incompleta
+                                </option>
+                                <option value="posGraduacaoCompleta">Pós Graduação completa</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="cursoGraduacao">Curso de Graduação</label>
+                            <input type="text" name="cursoGraduacao" id="cursoGraduacao" maxlength="80" required />
+                        </div>
+                        <div>
+                            <label for="instituicaoEnsino">Instituição de Ensino</label>
+                            <input type="text" name="instituicaoEnsino" id="instituicaoEnsino" maxlength="80" required />
+                        </div>
+                        <div>
+                            <label for="anoPrevistoFormacao"
+                                >Caso esteja cursando o ensino superior, técnico
+                                ou tecnólogo, qual o ano previsto para a sua
+                                formação?</label
+                            >
+                            <select name="anoPrevistoFormacao" id="anoPrevistoFormacao">
+                                <option value="jul24">Jul/24</option>
+                                <option value="dez24">Dez/24</option>
+                                <option value="jul25">Jul/25</option>
+                                <option value="dez25">Dez/25</option>
+                                <option value="jul26">Jul/26</option>
+                                <option value="dez26">Dez/26</option>
+                                <option value="jul27">Jul/27</option>
+                                <option value="dez27">Dez/27</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="genero"
+                                >Segundo as classificações do IBGE, qual é o seu
+                                gênero?</label
+                            >
+                            <select name="genero" id="genero">
+                                <option value="homemCis">Homem cis</option>
+                                <option value="mulherCis">Mulher cis</option>
+                                <option value="homemTrans">Homem trans</option>
+                                <option value="mulherTrans">Mulher trans</option>
+                                <option value="outraIdentidadeGenero">
+                                    Outra identidade de gênero
+                                </option>
+                                <option value="prefiroNaoResponder">Prefiro não responder</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="autodeclaracaoRacial"
+                                >Segundo as classificações do IBGE, qual é a sua
+                                autodeclaração racial?</label
+                            >
+                            <select name="autodeclaracaoRacial" id="autodeclaracaoRacial">
+                                <option value="amarela">Amarela</option>
+                                <option value="branca">Branca</option>
+                                <option value="indigena">Indígena</option>
+                                <option value="parda">Parda</option>
+                                <option value="preta">Preta</option>
+                                <option value="prefiroNaoResponder">Prefiro não responder</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="deficiencia"
+                                >Segundo as classificações do IBGE, você se
+                                identifica como tendo algum dos seguintes tipos
+                                de deficiência?</label
+                            >
+                            <select name="deficiencia" id="deficiencia">
+                                <option value="semDeficiencia">
+                                    Não possuo nenhum tipo de deficiência
+                                </option>
+                                <option value="deficienciaVisual">Visual</option>
+                                <option value="deficienciaFisica">Física</option>
+                                <option value="deficienciaAuditiva">Auditiva</option>
+                                <option value="deficienciaPsicossocialIntelectual">
+                                    Psicossocial/Intelectual
+                                </option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="conhecimentoProgramacao"
+                                >Assinale a alternativa mais próxima ao seu
+                                conhecimento em programação.</label
+                            >
+                            <select name="conhecimentoProgramacao" id="conhecimentoProgramacao">
+                                <option value="nuncaProgramei">Nunca programei uma linha de código</option>
+                                <option value="programeiPouco">Já programei um pouco seguindo alguns tutoriais</option>
+                                <option value="programeiLinguagem">Já programei uma linguagem de programação</option>
+                                <option value="trabalheiProgramacao">Já trabalhei com programação (pelo menos 1 ano)</option>
+                                <option value="programeiVariasLinguagens">Programei com várias linguagens ou trabalhei com programação por mais de 1 ano</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="acessoComputador">Você tem acesso a um computador para realizar o processo seletivo?</label>
+                            <select name="acessoComputador" id="acessoComputador">
+                                <option value="sim">Sim</option>
+                                <option value="nao">Não</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="estado">Estado</label>
+                            <select name="estado" id="estado">
+                                <option value="AC">Acre</option>
+                                <option value="AL">Alagoas</option>
+                                <option value="AP">Amapá</option>
+                                <option value="AM">Amazonas</option>
+                                <option value="BA">Bahia</option>
+                                <option value="CE">Ceará</option>
+                                <option value="DF">Distrito Federal</option>
+                                <option value="ES">Espírito Santo</option>
+                                <option value="GO">Goiás</option>
+                                <option value="MA">Maranhão</option>
+                                <option value="MT">Mato Grosso</option>
+                                <option value="MS">Mato Grosso do Sul</option>
+                                <option value="MG">Minas Gerais</option>
+                                <option value="PA">Pará</option>
+                                <option value="PB">Paraíba</option>
+                                <option value="PR">Paraná</option>
+                                <option value="PE">Pernambuco</option>
+                                <option value="PI">Piauí</option>
+                                <option value="RJ">Rio de Janeiro</option>
+                                <option value="RN">Rio Grande do Norte</option>
+                                <option value="RS">Rio Grande do Sul</option>
+                                <option value="RO">Rondônia</option>
+                                <option value="RR">Roraima</option>
+                                <option value="SC">Santa Catarina</option>
+                                <option value="SP">São Paulo</option>
+                                <option value="SE">Sergipe</option>
+                                <option value="TO">Tocantins</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="cidade">Cidade</label>
+                            <input type="text" name="cidade" id="cidade" maxlength="40" required />
+                        </div>
+                        <div>
+                            <label for="bairro">Bairro</label>
+                            <input type="text" name="bairro" id="bairro" maxlength="40" required />
+                        </div>
+                        <div>
+                            <label for="logradouro">Logradouro</label>
+                            <input type="text" name="logradouro" id="logradouro" maxlength="80" required />
+                        </div>
+                        <div>
+                            <label for="numero">Número</label>
+                            <input type="number" name="numero" id="numero" maxlength="6" required />
+                        </div>
+                        <div>
+                            <label for="complemento">Complemento</label>
+                            <input type="text" name="complemento" id="complemento" maxlength="80" placeholder="Opcional..."/>
+                        </div>
+                    </div>
+                    <div class="form__cadastro__termos">
+                        <label for="concordoTermos"
+                            >Concordo com as regras do programa e as políticas
+                            de privacidade</label
+                        >
+                        <input type="checkbox" name="concordoTermos" id="concordoTermos" required />
+                    </div>
+                    <div class="form__cadastro__btn">
+                        <button type="submit">Enviar</button>
+                    </div>
+                </form>
+            </section>
+        </main>
+    </body>
+</html>
+

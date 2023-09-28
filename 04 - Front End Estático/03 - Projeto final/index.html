@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NovembeR Tech Company | Home</title>
+    <link
+      rel="shortcut icon"
+      href="./src/assets/img/favicon.ico"
+      type="image/x-icon"
+    />
+    <link rel="stylesheet" href="./src/styles/style.css" />
+    <link rel="stylesheet" href="./src/styles/responsive.css" />
+    <!-- fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+    rel="stylesheet"
+    href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"
+  />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <!-- jQuery UI -->
+    <link
+      rel="stylesheet"
+      href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"
+    />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- jQuery UI -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- icons -->
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/fcd4d39998.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  </head>
+  <body>
+    <header id="home" class="home">
+      <!-- Marcos -->
+      <div class="container__header">
+        <div class="header__logo">
+          <a href="#"
+            ><img
+              src="./src/assets/img/Logo.png"
+              alt="Logo da NovembeR Tech Company"
+          /></a>
+        </div>
+        <div class="header__nav">
+          <nav>
+            <ul>
+              <li><a href="#home" class="scroll-link">Home</a></li>
+              <li><a href="#sobre-nos" class="scroll-link">Sobre nós</a></li>
+              <li><a href="#projetos" class="scroll-link">Projetos</a></li>
+              <li><a href="#contato" class="scroll-link">Contato</a></li>
+            </ul>
+          </nav>
+
+          <nav id="nav-mobile" class="header__nav--mobile">
+            <ul>
+              <li><a href="#home" class="scroll-link">Home</a></li>
+              <li><a href="#sobre-nos" class="scroll-link">Sobre nós</a></li>
+              <li><a href="#projetos" class="scroll-link">Projetos</a></li>
+              <li><a href="#contato" class="scroll-link">Contato</a></li>
+            </ul>
+          </nav>
+
+          <div class="header__menu">
+            <i id="i-menu" class="fa-solid fa-bars fa-white i-menu"></i>
+            <i id="i-close" class="fa-solid fa-xmark i-close"></i>
+          </div>
+        </div>
+      </div>
+    </header>
+    <main>
+      <section id="sobre-nos" class="sobre-nos">
+        <!-- Alan  -->
+      </section>
+
+      <section id="projetos" class="projetos">
+        <!--Kawã-->
+        <div class="container-projetos">
+          <div class="txt-projetos">
+            <h1>Projetos Inovadores</h1>
+            <h3>Dados relevantes ao longo da nossa jornada</h3>
+          </div>
+
+          <div class="card-projects">
+            <div class="card">
+              <div class="top-card">
+                <img src="src/assets/img/livraria.png" alt="" />
+              </div>
+              <div class="bottom-card">
+                <p class="txt-card">Livraria Mooca</p>
+                <div class="icones">
+                  <a
+                    href="https://github.com/Kawa-github/Livraria"
+                    class="link-icones"
+                    target="_blank"
+                  >
+                    <i class="fa-brands fa-github"></i>
+                  </a>
+                  <a
+                    href="https://kawa-github.github.io/Livraria/"
+                    class="link-icones"
+                    target="_blank"
+                  >
+                    <i class="fa-solid fa-code"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="top-card">
+                <img src="src/assets/img/lista-naruto.png" alt="" />
+              </div>
+              <div class="bottom-card">
+                <div class="icones">
+                  <p class="txt-card">Consumindo API Naruto</p>
+                  <a
+                    href="https://github.com/Kawa-github/API-Naruto"
+                    class="link-icones"
+                    target="_blank"
+                  >
+                    <i class="fa-brands fa-github"></i>
+                  </a>
+                  <a
+                    href="https://kawa-github.github.io/API-Naruto/"
+                    class="link-icones"
+                    target="_blank"
+                  >
+                    <i class="fa-solid fa-code"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="top-card">
+                <img src="./src/assets/img/portfolio-matheus.png" alt="Portfolio do integrante Matheus Guedes" />
+              </div>
+              <div class="bottom-card">
+                <div class="icones">
+                  <p class="txt-card">Portfolio Matheus Guedes</p>
+                  <a 
+                    href="https://github.com/zmatezz/portfolio-zmatez" 
+                    class="link-icones" 
+                    target="_blank"
+                  >
+                    <i class="fa-brands fa-github"></i>
+                  </a>
+                  <a 
+                    href="https://zmatezz.github.io/portfolio-zmatez/" 
+                    class="link-icones" 
+                    target="_blank"
+                  >
+                    <i class="fa-solid fa-code"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="top-card">
+                <img src="./src/assets/img/animais-fantasticos.png" alt="Projeto Animais Fantasticos" />
+              </div>
+              <div class="bottom-card">
+                <div class="icones">
+                  <p class="txt-card">Animais Fantasticos (em produção)</p>
+                  <a 
+                    href="https://github.com/yomarcoslinss/animais-fantasticos" 
+                    class="link-icones" 
+                    target="_blank"
+                  >
+                    <i class="fa-brands fa-github"></i>
+                  </a>
+                  <a 
+                    href="https://yomarcoslinss.github.io/animais-fantasticos/" 
+                    class="link-icones" 
+                    target="_blank"
+                  >
+                    <i class="fa-solid fa-code"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="top-card">
+                <img src="./src/assets/img/decodificador-texto.png" alt="Projeto Decodificador de Texto" />
+              </div>
+              <div class="bottom-card">
+                <div class="icones">
+                  <p class="txt-card">Decodificador de Texto</p>
+                  <a 
+                    href="https://github.com/yomarcoslinss/one-decodificador-de-texto/" 
+                    class="link-icones" 
+                    target="_blank"
+                  >
+                    <i class="fa-brands fa-github"></i>
+                  </a>
+                  <a 
+                    href="https://yomarcoslinss.github.io/one-decodificador-de-texto/" 
+                    class="link-icones" 
+                    target="_blank"
+                  >
+                    <i class="fa-solid fa-code"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            
+          </div>
+        </div>
+      </section>
+
+      <section id="contato" class="contact">
+        <!-- Matheus  -->
+
+        <div class="contact-title">
+          <h1>Contato</h1>
+          <h3>
+            Entre em contato, estamos <span>felizes</span> em poder ajudar!
+          </h3>
+        </div>
+        <div class="contact-container">
+          <div class="contact-info">
+            <div class="contact-options">
+              <i class="bx bx-phone-incoming"></i>
+              <div class="contact-data">
+                <p>Telefone</p>
+                <a href="tel:1126093807">(11)2609-3807</a>
+              </div>
+            </div>
+            <div class="contact-options">
+              <i class="bx bx-envelope"></i>
+              <div class="contact-data">
+                <p>E-mail</p>
+                <a href="mailto:contato@ada.tech">contato@ada.tech</a>
+              </div>
+            </div>
+            <div class="contact-options">
+              <i class="bx bx-map"></i>
+              <div class="contact-data">
+                <p>Endereço</p>
+                <a
+                  class="contact-address"
+                  href="https://maps.app.goo.gl/Bq5hgR7CReobQ4hr9"
+                  >Av. Brig. Faria Lima, 1306 - Pinheiros, São Paulo - SP</a
+                >
+              </div>
+            </div>
+          </div>
+          <div class="form-container">
+            <div class="form-title">
+              <i class="bx bx-time-five"></i>
+              <p>Agende uma visita!</p>
+            </div>
+            <div class="contact-form">
+              <form class="form">
+                <label>
+                  <input 
+                  class="input" 
+                  name="Nome" 
+                  type="text" 
+                  required 
+                  />
+                  <span>Nome completo</span>
+                </label>
+
+                <label>
+                  <input
+                    class="input"
+                    name="Telefone"
+                    type="tel"
+                    placeholder=""
+                    oninput="formatarTelefone(this)"
+                    maxlength="15"
+                    minlength="15"
+                    required
+                  />
+                  <span>Telefone</span>
+                </label>
+
+                <label>
+                  <input
+                    class="input"
+                    name="Data"
+                    id="datepicker"
+                    placeholder=""
+                    required
+                    readonly
+                  />
+                  <span>Data</span>
+                </label>
+                <button class="submit" id="submitButton" type="button">
+                  Enviar
+                </button>
+              </form>
+
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3656.9772633502803!2d-46.69488092372483!3d-23.569260061884382!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce5786b7831717%3A0x13dc48ab54d37aba!2sAda%20Tech!5e0!3m2!1spt-BR!2sbr!4v1695680803866!5m2!1spt-BR!2sbr"
+                width="450"
+                height="335"
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+              ></iframe>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-modal">
+          <img
+            src="https://res.cloudinary.com/dgeeyohmv/image/upload/v1695772423/mep5ys34t1mhep4ahehy.gif"
+            alt=""
+          />
+          <p class="text-white text-2xl">Visita agendada.</p>
+          <span class="text-white text-xl"
+            >Entraremos em contato, obrigado!</span
+          >
+        </div>
+      </section>
+      <a class="back-to-top" href="#">
+        <i class="bx bx-up-arrow-alt"></i>
+      </a>
+    </main>
+    <footer>
+      <div class="footer-container">
+        <div class="footer-logo">
+          <a href="#">
+            <img id="img-footer" src="./src/assets/img/Logo.png" alt="" />
+          </a>
+        </div>
+
+        <div class="nav-footer">
+          <p>Links Úteis</p>
+          <nav>
+            <ul>
+              <li><a class="footer-links" href="#">Home</a></li>
+              <li><a class="footer-links" href="#">Sobre nós</a></li>
+              <li><a class="footer-links" href="#">Projetos</a></li>
+              <li><a class="footer-links" href="#">Contato</a></li>
+            </ul>
+          </nav>
+        </div>
+
+        <div class="social-icons">
+          <a href="#"><i class="bx bxl-instagram"></i></a>
+          <a href="#"><i class="bx bxl-linkedin"></i></a>
+        </div>
+      </div>
+      
+      <div>
+        <p class="reserved-rights">
+          © 2023 <a href="#">November Tech Company</a>.
+        </p>
+      </div>
+    </footer>
+    <script src="./src/scripts/main.js"></script>
+  </body>
+</html>

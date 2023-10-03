@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Sistema do Xerife | Inicio</title>
+        <link
+            rel="shortcut icon"
+            href="./src/assets/img/favicon.ico"
+            type="image/x-icon"
+        />
+        <link rel="stylesheet" href="./src/styles/style.css" />
+        <link rel="stylesheet" href="./src/styles/responsive.css" />
+        <!-- icons -->
+        <link
+            href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+            rel="stylesheet"
+        />
+        <script
+            src="https://kit.fontawesome.com/fcd4d39998.js"
+            crossorigin="anonymous"
+        ></script>
+    </head>
+    <body>
+        <header>
+            <!-- Marcos -->
+            <div class="container__header">
+                <div class="header__logo">
+                    <a href="#"
+                        ><img
+                            src="./src/assets/img/Logo.png"
+                            alt="Logo da NovembeR Tech Company"
+                    /></a>
+                </div>
+                <div class="header__nav">
+                    <nav>
+                        <ul>
+                            <li>
+                                <a href="#" class="scroll-link">Sistema do Xerife</a>
+                            </li>
+                        </ul>
+                    </nav>
+
+                    <nav id="nav-mobile" class="header__nav--mobile">
+                        <ul>
+                            <li>
+                                <a href="#" class="scroll-link">Sistema do Xerife</a>
+                            </li>
+                        </ul>
+                    </nav>
+
+                    <div class="header__menu">
+                        <i
+                            id="i-menu"
+                            class="fa-solid fa-bars fa-white i-menu"
+                        ></i>
+                        <i id="i-close" class="fa-solid fa-xmark i-close"></i>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <main>
+          <section class="painel-xerife">
+            <h1>Cadastrar Criminoso</h1>
+            <h3>Oferte uma recompensa pela cabeça de um criminoso</h3>
+            <form id="formXerife">
+                <label for="formNomeCriminoso">Nome do Criminoso:</label>
+                <input type="text" name="formNomeCriminoso" id="formNomeCriminoso"  />
+                <label for="formIdadeCriminoso">Idade do Criminoso (média):</label>
+                <input type="Number" name="formIdadeCriminoso" id="formIdadeCriminoso" />
+                <label for="formCrimeCriminoso">Crime:</label>
+                <input type="text" name="formCrimeCriminoso" id="formCrimeCriminoso" />
+                <label for="formDataCrime">Data do crime:</label>
+                <input type="date" name="formDataCrime" id="formDataCrime">
+                <div class="radio-options">
+                  <label for="formVivoOuMorto">Vivo ou morto?</label>
+                  <div>
+                    Somente vivo <input type="radio" name="formVivoOuMorto" id="formSomenteVivo" value="1" checked>
+                    Vivo ou Morto <input type="radio" name="formVivoOuMorto" id="formVivoOuMorto" value="2" required>
+                  </div>
+                </div>
+                <label for="formRecompensa">Recompensa</label>
+                <input type="range" name="formRecompensa" id="formRecompensa" min="20" max="2000" step="1" value="20">
+
+                <div class="modalRecompensa" id="modalRecompensa">
+                  <span id="modalRecompensaValue">0</span>
+                </div>
+
+                <button type="submit" id="btnCadastrarCriminoso">
+                    Cadastrar Criminoso
+                </button>
+            </form>
+
+            <table id="tabelaCriminosos">
+                <tr>
+                    <th>Nome</th>
+                    <th>Idade</th>
+                    <th>Crime</th>
+                    <th>Data do Crime</th>
+                    <th>Vivo ou morto</th>
+                    <th>Recompensa</th>
+                </tr>
+            </table>
+
+            <a class="back-to-top" href="#">
+                <i class="bx bx-up-arrow-alt"></i>
+            </a>
+          </section>
+        </main>
+
+        <footer>
+            <div class="footer-container">
+                <div class="footer-logo">
+                    <a href="#">
+                        <img
+                            id="img-footer"
+                            src="./src/assets/img/Logo.png"
+                            alt=""
+                        />
+                    </a>
+                </div>
+
+                <div class="nav-footer">
+                    <p>Links Úteis</p>
+                    <nav>
+                        <ul>
+                            <li><a class="footer-links" href="#">Sistema do Xerife</a></li>
+                        </ul>
+                    </nav>
+                </div>
+
+                <div class="social-icons">
+                    <a href="#"><i class="bx bxl-instagram"></i></a>
+                    <a href="#"><i class="bx bxl-linkedin"></i></a>
+                </div>
+            </div>
+
+            <div>
+                <p class="reserved-rights">
+                    © 2023 <a href="#">&lt;yomarcoslinss/&gt;</a>.
+                </p>
+            </div>
+        </footer>
+        <script src="./src/js/main.js"></script>
+        <!-- <script src="./src/js/formXerife.js"></script> -->
+        <script type="module" src="./src/js/formXerife.js"></script>
+    </body>
+</html>

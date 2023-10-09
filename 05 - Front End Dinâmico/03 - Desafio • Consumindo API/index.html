@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="./src/assets/img/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="./src/css/style.css">
+    <title>Pokedéx</title>
+
+    <script defer src="./src/js/script.js"></script>
+</head>
+<body>
+    
+    <main>
+
+        <img id="pokemon__image" class="pokemon__image" src="#" alt="pokemon">
+
+        <h1 class="pokemon__data"> 
+            <span id="pokemon__number" class="pokemon__number"></span> -
+            <span id="pokemon__name" class="pokemon__name"></span> 
+        </h1>
+
+        <form id="form" class="form">
+            <input 
+            type="search"
+            id="input__search"
+            class="input__search"
+            placeholder="Nome ou ID"
+            required
+            />
+        </form>
+
+        <div class="buttons">
+            <button id="btn-prev" class="button btn-prev">Anterior &lt; </button>
+            <button id="btn-next" class="button btn-next">Proximo &gt; </button>
+        </div>
+
+        <img class="pokedex" src="./src/assets/img/pokedex.png" alt="Pokedéx" />
+
+    </main>
+
+</body>
+</html>

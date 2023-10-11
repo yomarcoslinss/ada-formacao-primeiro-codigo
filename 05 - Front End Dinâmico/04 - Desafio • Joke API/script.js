@@ -6,6 +6,10 @@ const btnFavoritar = document.querySelector('#btn-favoritar')
 const btnDesfavoritar = document.querySelector('.btn-desfavoritar')
 const areaFavoritos = document.querySelector('#favoritos');
 
+let charada = '';
+let charadaData = '';
+let resposta = '';
+
 const fetchCharada = async () => {
     const APIResponse = await fetch('https://v2.jokeapi.dev/joke/Any');
     const data = await APIResponse.json();
@@ -18,15 +22,13 @@ const fetchTraducao = async(texto) => {
     return data;
 }
 
+
 const traduzir = async (texto) => {
     const data = await fetchTraducao(texto);
 
     return data.responseData.translatedText;
 }
 
-let charada = '';
-let charadaData = '';
-let resposta = '';
 
 const obterCharada = async () => {
     resultadoCharada.innerText = 'Carregando...';
@@ -46,11 +48,13 @@ const obterCharada = async () => {
 
 };
 
+
 const obterResposta = () => {
     if(charada){
         resultadoResposta.innerText = resposta;
     }
 };
+
 
 const favoritar = async () => {
     if(charadaData) {
@@ -61,8 +65,30 @@ const favoritar = async () => {
             <button class="btn-desfavoritar btn btn-outline-danger btn-sm">Remover</button>
         </div>
         `
+
+    arrayCharadasFavoritas.push({
+        'setup': charadaData.setup,
+        'delivery': charadaData.delivery
+    })
+
     }
 }
+
+const carregarPiadasFavoritas = () => {
+    const dados = localStorage.getItem('charadas');
+}
+
+
+const arrayCharadasFavoritas = []
+
+const objCharadasFavoritas = {
+    'charadas' : arrayCharadasFavoritas
+};
+
+
+localStorage.setItem('charadas', JSON.stringify(objCharadasFavoritas));
+
+
 
 btnCharada.onclick = (e) => {
     e.preventDefault();
